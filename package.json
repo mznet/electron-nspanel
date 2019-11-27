@@ -4,7 +4,9 @@
   "description": "electron nspanel addon",
   "main": "bindings.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node-gyp build",
+    "install": "node-gyp rebuild",
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
@@ -22,11 +24,6 @@
   "dependencies": {
     "bindings": "^1.5.0",
     "nan": "^2.14.0"
-  },
-  "scripts": {
-    "build": "node-gyp build",
-    "install": "node-gyp rebuild",
-    "start": "node ./index.js"
   },
   "gypfile": true
 }
