@@ -51,20 +51,10 @@ Value MakeKeyWindow(const Napi::CallbackInfo& info) {
   return Napi::Boolean::New(env, true);
 }
 
-Napi::Object Init(Napi::Env env, Napi::Object exports) {
-  exports.Set(Napi::Boolean::New(env, "makePanel"), Napi::Function::New(env, MakePanel));
-  exports.Set(Napi::Boolean::New(env, "makeKeyWindow"), Napi::Function::New(env, MakeKeyWindow));
+Napi::Object InitAll(Napi::Env env, Napi::Object exports) {
+  exports.Set(Napi::String::New(env, "MakePanel"), Napi::Function::New(env, MakePanel));
+  exports.Set(Napi::String::New(env, "MakeKeyWindow"), Napi::Function::New(env, MakeKeyWindow));
   return exports;
 }
 
-// Napi::Object Init(Napi::Env env, Napi::Object exports) {
-//   return Napi::Function::New(env, MakePanel);
-// }
-
-// Object Init(Napi::Env env, Napi::Object exports) {
-//   exports.Set(Napi::Object(env, "makePanel"), Function::New(env, Make));
-//   // exports.Set(Napi::Object(env, "makekeywindow"), Napi::Function::New(env, MakeKeyWindow));
-//   return exports;
-// }
-
-NODE_API_MODULE(addon, Init)
+NODE_API_MODULE(addon, InitAll)
