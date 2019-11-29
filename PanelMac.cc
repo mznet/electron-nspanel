@@ -53,7 +53,7 @@ Value MakeKeyWindow(const Napi::CallbackInfo& info) {
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports.Set(Napi::Boolean::New(env, "makePanel"), Napi::Function::New(env, MakePanel));
-  exports.Set(Napi::Boolean::New(env, "makeKeyWindow"), Napi::Function::New(env, MakeKeyWindows));
+  exports.Set(Napi::Boolean::New(env, "makeKeyWindow"), Napi::Function::New(env, MakeKeyWindow));
   return exports;
 }
 

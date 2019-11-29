@@ -1,24 +1,24 @@
 var BrowserWindow = require("electron").BrowserWindow;
-var NativeExtension = require("bindings")("PanelMac");
+var PanelMac = require("bindings")("PanelMac");
 
 class PanelWindow extends BrowserWindow {
   constructor(options) {
     super(options);
-    NativeExtension.MakePanel(this.getNativeWindowHandle());
+    PanelMac.MakePanel(this.getNativeWindowHandle());
   }
 
   show() {
     super.showInactive();
-    NativeExtension.MakeKeyWindow(this.getNativeWindowHandle());
+    PanelMac.MakeKeyWindow(this.getNativeWindowHandle());
   }
 }
 
 module.exports = {
   PanelWindow,
   makeKeyWindow: function(window) {
-    return NativeExtension.MakeKeyWindow(window.getNativeWindowHandle());
+    return PanelMac.MakeKeyWindow(window.getNativeWindowHandle());
   },
   makePanel: function(window) {
-    return NativeExtension.MakePanel(window.getNativeWindowHandle());
+    return PanelMac.MakePanel(window.getNativeWindowHandle());
   }
 };

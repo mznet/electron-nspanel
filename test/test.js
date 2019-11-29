@@ -1,11 +1,13 @@
 const electron = require("electron");
 const { app } = electron;
-const PanelWindow = require("../").PanelWindow;
+const { PanelWindow } = require("../index");
 const path = require("path");
-
 const mainWindow = null;
+
+console.log(PanelWindow);
+
 app.on("ready", function() {
-  mainWindow = new PanelWindow({
+  const mainWindow = new PanelWindow({
     center: true,
     width: 1400,
     height: 900,
