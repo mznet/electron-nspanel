@@ -1,7 +1,7 @@
 {
   "name": "electron-nspanel",
   "version": "0.0.1",
-  "description": "electron nspanel addon",
+  "description": "electron native extension for NSPANEL using node-addon-api",
   "main": "bindings.js",
   "scripts": {
     "build": "node-gyp build",
@@ -15,12 +15,15 @@
     "url": "git+https://github.com/mznet/electron-nspanel.git"
   },
   "keywords": [
-    "nspanel"
+    "nspanel",
+    "electron",
+    "nswindow"
   ],
-  "author": "mznet",
+  "author": "mznet <mznet07@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mznet/electron-nspanel/issues"
+    "url": "https://github.com/mznet/electron-nspanel/issues",
+    "email": "mznet07@gmail.com"
   },
   "homepage": "https://github.com/mznet/electron-nspanel#readme",
   "dependencies": {
