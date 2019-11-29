@@ -5,8 +5,10 @@
   "main": "bindings.js",
   "scripts": {
     "build": "node-gyp build",
+    "electron": "electron ./test/test.js",
     "install": "node-gyp rebuild",
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,20 @@
     "bindings": "^1.5.0",
     "node-addon-api": "^2.0.0"
   },
-  "gypfile": true
+  "gypfile": true,
+  "devDependencies": {
+    "@jest-runner/electron": "^2.0.2",
+    "electron": "^7.1.2",
+    "jest": "^24.9.0"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "testMatch": [
+      "**/test/*.js"
+    ],
+    "runner": "@jest-runner/electron/main",
+    "testEnvironment": "node"
+  }
 }

@@ -1,5 +1,5 @@
 var BrowserWindow = require("electron").BrowserWindow;
-var NativeExtension = require("bindings")("NativeExtension");
+var NativeExtension = require("bindings")("PanelMac");
 
 class PanelWindow extends BrowserWindow {
   constructor(options) {
