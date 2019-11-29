@@ -31,9 +31,10 @@ Value MakePanel(const CallbackInfo& info) {
   object_setClass(mainContentView.window, [PROPanel class]);
 
   mainContentView.window.styleMask |= NSWindowStyleMaskNonactivatingPanel;
+  [mainContentView.window setStyleMask: NSBorderlessWindowMask ];
   [mainContentView.window setCollectionBehavior: NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorMoveToActiveSpace | NSWindowCollectionBehaviorFullScreenAuxiliary ];
-  [mainContentView.window setLevel:NSFloatingWindowLevel];
-  [mainContentView.window setFloatingPanel:YES];
+  [mainContentView.window setLevel: NSFloatingWindowLevel];
+  [mainContentView.window setFloatingPanel: YES];
 
   return Napi::Boolean::New(env, true);
   
