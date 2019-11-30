@@ -32,7 +32,7 @@ Value MakePanel(const CallbackInfo& info) {
 
   mainContentView.window.styleMask |= NSWindowStyleMaskNonactivatingPanel;
   [mainContentView.window setStyleMask: NSBorderlessWindowMask ];
-  [mainContentView.window setCollectionBehavior: NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorMoveToActiveSpace | NSWindowCollectionBehaviorFullScreenAuxiliary ];
+  [mainContentView.window setCollectionBehavior: NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorFullScreenAuxiliary ];
   [mainContentView.window setLevel: NSFloatingWindowLevel];
 
   return Napi::Boolean::New(env, true);
