@@ -34,10 +34,8 @@ Value MakePanel(const CallbackInfo& info) {
   [mainContentView.window setStyleMask: NSBorderlessWindowMask ];
   [mainContentView.window setCollectionBehavior: NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorMoveToActiveSpace | NSWindowCollectionBehaviorFullScreenAuxiliary ];
   [mainContentView.window setLevel: NSFloatingWindowLevel];
-  [mainContentView.window setFloatingPanel: YES];
 
   return Napi::Boolean::New(env, true);
-  
 }
 
 Value MakeKeyWindow(const Napi::CallbackInfo& info) {
