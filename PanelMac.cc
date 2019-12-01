@@ -31,7 +31,7 @@ Value MakePanel(const CallbackInfo& info) {
   object_setClass(mainContentView.window, [PROPanel class]);
 
   mainContentView.window.styleMask |= NSWindowStyleMaskNonactivatingPanel;
-  [mainContentView.window setCollectionBehavior: NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorMoveToActiveSpace | NSWindowCollectionBehaviorFullScreenAuxiliary ];
+  [mainContentView.window setCollectionBehavior: NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorFullScreenAuxiliary ];
   [mainContentView.window setLevel:NSFloatingWindowLevel];
 
   // [[mainContentView.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
