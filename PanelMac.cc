@@ -22,6 +22,7 @@ using namespace Napi;
 Value MakePanel(const CallbackInfo& info) {
   Env env = info.Env();
   char* handleBuffer = info[0].As<Napi::Buffer<char >>().Data();
+  bool borderless = info[1].As<Napi::Boolean>();
 
   NSView* mainContentView = *reinterpret_cast<NSView**>(handleBuffer);
 
@@ -30,6 +31,8 @@ Value MakePanel(const CallbackInfo& info) {
 
   object_setClass(mainContentView.window, [PROPanel class]);
 
+  if (!borderless)
+    [mainContentView.window setStyleMask: NSBorderlessWindowMask];
   mainContentView.window.styleMask |= NSWindowStyleMaskNonactivatingPanel;
   [mainContentView.window setCollectionBehavior: NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorFullScreenAuxiliary ];
   [mainContentView.window setLevel:NSFloatingWindowLevel];
@@ -37,8 +40,6 @@ Value MakePanel(const CallbackInfo& info) {
   // [[mainContentView.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
   // [[mainContentView.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
   // [[mainContentView.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
-
-  [mainContentView.window setStyleMask: NSBorderlessWindowMask];
   // [mainContentView.window setFloatingPanel:YES];
 
   return Napi::Boolean::New(env, true);

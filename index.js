@@ -3,8 +3,10 @@ var PanelMac = require("bindings")("PanelMac");
 
 class PanelWindow extends BrowserWindow {
   constructor(options) {
-    super(options);
-    PanelMac.MakePanel(this.getNativeWindowHandle());
+    const o = { ...options };
+    o.frame = true;
+    super(o);
+    PanelMac.MakePanel(this.getNativeWindowHandle(), options.frame);
   }
 
   show() {
