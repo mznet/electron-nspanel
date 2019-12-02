@@ -38,7 +38,7 @@ Value MakePanel(const CallbackInfo& info) {
   // [[mainContentView.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
   // [[mainContentView.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
 
-  // [mainContentView.window setStyleMask: NSBorderlessWindowMask];
+  [mainContentView.window setStyleMask: NSBorderlessWindowMask];
   // [mainContentView.window setFloatingPanel:YES];
 
   return Napi::Boolean::New(env, true);
