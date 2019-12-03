@@ -1,6 +1,6 @@
 {
   "name": "electron-nspanel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "electron native extension for NSPANEL using node-addon-api",
   "main": "bindings.js",
   "scripts": {
