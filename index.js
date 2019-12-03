@@ -6,7 +6,8 @@ class PanelWindow extends BrowserWindow {
     const o = { ...options };
     o.frame = true;
     super(o);
-    PanelMac.MakePanel(this.getNativeWindowHandle(), options.frame ? options.frame : true);
+    if (!options.frame === undefined) options.frame = true
+    PanelMac.MakePanel(this.getNativeWindowHandle(), options.frame);
   }
 
   show() {
