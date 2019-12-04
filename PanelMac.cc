@@ -11,30 +11,33 @@ using namespace Napi;
 @end
 
 @implementation PROPanel
-- (BOOL)needsPanelToBecomeKey {
+- (BOOL)needsPanelToBecomeKey
+{
   return YES;
 }
-- (BOOL)acceptsFirstResponder {
+- (BOOL)acceptsFirstResponder
+{
   return YES;
 }
 @end
 
-Value MakePanel(const CallbackInfo& info) {
+Value MakePanel(const CallbackInfo &info)
+{
   Env env = info.Env();
-  char* handleBuffer = info[0].As<Napi::Buffer<char >>().Data();
-  bool borderless = info[1].As<Napi::Boolean>();
+  char *handleBuffer = info[0].As<Napi::Buffer<char>>().Data();
+  // bool borderless = info[1].As<Napi::Boolean>();
 
-  NSView* mainContentView = *reinterpret_cast<NSView**>(handleBuffer);
+  NSView *mainContentView = *reinterpret_cast<NSView **>(handleBuffer);
 
   if (!mainContentView)
     return Napi::Boolean::New(env, false);
 
   object_setClass(mainContentView.window, [PROPanel class]);
 
-  if (!borderless)
-    [mainContentView.window setStyleMask: NSBorderlessWindowMask];
-  mainContentView.window.styleMask |= NSWindowStyleMaskNonactivatingPanel;
-  [mainContentView.window setCollectionBehavior: NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorFullScreenAuxiliary ];
+  [mainContentView.window setStyleMask:NSBorderlessWindowMask];
+
+  // mainContentView.window.styleMask |= NSWindowStyleMaskNonactivatingPanel;
+  [mainContentView.window setCollectionBehavior:NSWindowCollectionBehaviorTransient | NSWindowCollectionBehaviorFullScreenAuxiliary];
   [mainContentView.window setLevel:NSFloatingWindowLevel];
 
   // [[mainContentView.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
@@ -45,10 +48,11 @@ Value MakePanel(const CallbackInfo& info) {
   return Napi::Boolean::New(env, true);
 }
 
-Value MakeKeyWindow(const Napi::CallbackInfo& info) {
+Value MakeKeyWindow(const Napi::CallbackInfo &info)
+{
   Env env = info.Env();
-  char* handleBuffer = info[0].As<Napi::Buffer<char >>().Data();
-  NSView* mainContentView = *reinterpret_cast<NSView**>(handleBuffer);
+  char *handleBuffer = info[0].As<Napi::Buffer<char>>().Data();
+  NSView *mainContentView = *reinterpret_cast<NSView **>(handleBuffer);
 
   if (!mainContentView)
     return Napi::Boolean::New(env, false);
@@ -57,7 +61,8 @@ Value MakeKeyWindow(const Napi::CallbackInfo& info) {
   return Napi::Boolean::New(env, true);
 }
 
-Napi::Object InitAll(Napi::Env env, Napi::Object exports) {
+Napi::Object InitAll(Napi::Env env, Napi::Object exports)
+{
   exports.Set(Napi::String::New(env, "MakePanel"), Napi::Function::New(env, MakePanel));
   exports.Set(Napi::String::New(env, "MakeKeyWindow"), Napi::Function::New(env, MakeKeyWindow));
   return exports;
