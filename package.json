@@ -33,7 +33,7 @@
   "gypfile": true,
   "devDependencies": {
     "@jest-runner/electron": "^2.0.2",
-    "electron": "^7.1.2",
+    "electron": "^9.4.0",
     "jest": "^24.9.0"
   },
   "jest": {
